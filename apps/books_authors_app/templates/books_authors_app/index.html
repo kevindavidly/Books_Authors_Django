@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Books & Authors</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <BR>
+        <h1>Add a Book</h1>
+        <BR>
+        <form action='/addbook' method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="new_title">Title</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Book" aria-describedby="basic-addon1" name="new_title">
+                </div>
+                <BR>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Description</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="desc"></textarea>
+                </div>
+                <BR>
+                <button type="submit"class="btn btn-primary">Add</button>
+            </div>
+        </form>
+            <div class="col-5">
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Action</th>
+                    </thead>
+                    {% for book in all_the_books %}
+                    <tbody>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a href="/books/{{book.id}}">View</a></td>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

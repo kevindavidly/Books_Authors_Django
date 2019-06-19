@@ -1,0 +1,55 @@
+Book.objects.create(title = "C Sharp", desc = "C")
+Book.objects.create(title = "Java", desc = "J")
+Book.objects.create(title = "Python", desc = "P")
+Book.objects.create(title = "PHP", desc = "PH")
+Book.objects.create(title = "Ruby", desc = "R")
+
+Author.objects.create(first_name = "Jane", last_name = "Austen")
+Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+Author.objects.create(first_name = "Fyodor", last_name = "Dostoevksy")
+Author.objects.create(first_name = "William", last_name = "Shakespeare")
+Author.objects.create(first_name = "Lau", last_name = "Tzu")
+
+book_to_update = Book.objects.get(id=1)
+book_to_update.title = "C#"
+book_to_update.save()
+
+author_to_update = Author.objects.get(id=4)
+author_to_update.first_name = "Bill"
+author_to_update.save()
+
+author_to_edit = Book.objects.get(id=1)
+author_to_edit.add(Book.objects.get(id=1),(Book.objects.get(id=2))
+author_to_edit.save()
+
+author_to_edit = Author.objects.get(id=1)
+author_to_edit.books.add(Book.objects.get(id=1), Book.objects.get(id=2))
+author_to_edit.save()
+
+author_to_edit = Author.objects.get(id=2)
+author_to_edit.books.add(Book.objects.get(id=1), Book.objects.get(id=2), Book.objects.get(id=3))
+author_to_edit.save()
+
+author_to_edit = Author.objects.get(id=3)
+author_to_edit.books.add(Book.objects.get(id=1), Book.objects.get(id=2), Book.objects.get(id=3), Book.objects.get(id=4))
+author_to_edit.save()
+
+author_to_edit = Author.objects.get(id=4)
+author_to_edit.books.add(Book.objects.get(id=1), Book.objects.get(id=2), Book.objects.get(id=3), Book.objects.get(id=4), Book.objects.get(id=5))
+author_to_edit.save()
+
+Book.objects.get(id=3).authors.all()
+
+Author.objects.get(id=1).books.remove(Book.objects.get(id=3))
+
+author_to_edit = Author.objects.get(id=5)
+author_to_edit.books.add(Book.objects.get(id=2))
+author_to_edit.save()
+
+author_to_show = Author.objects.get(id=3)
+author_to_show.books.Book.objects.all()
+
+Author.objects.get(id=3).books.all()
+
+Book.objects.get(id=5).authors.all()
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+<h1>{{ Author.first_name}} {{Author.last_name}}</h1>
+<h2>ID: {{Author.id}}</h2>
+<h2>Notes:</h2> {{Author.notes}}
+
+<br>
+
+{% for book in Books.all %}
+<li>{{ book.title}}</li>
+{% endfor %}
+
+<form method="POST" action="/addbooktoauthor">
+    {% csrf_token %}
+    <input type="hidden" name="authors" value="{{Author.id}}">
+    <p>Add a Book</p>
+    <select class="form-control col-4" id="bookid" name='bookid'>
+        {% for book in allbook %}
+        <option value={{book.id}}>{{book.title}}</option>
+
+        {%endfor%}
+    </select>
+    <button type="submit" class="btn btn-success mt-3">Add Book</button>
+
+</body>
+</html>
